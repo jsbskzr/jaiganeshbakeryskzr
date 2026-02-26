@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jai Ganesh Bakery - Serving Freshness Since 1955 in Sirpur Kagaznagar. First bakery in town offering premium cakes, pastries, snacks, and custom cakes.">
+    <meta name="keywords" content="Jai Ganesh Bakery, Sirpur Kagaznagar bakery, fresh cakes, custom cakes, pastries, established 1955">
+    <title>Jai Ganesh Bakery | Serving Freshness Since 1955</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-cream: #FFFDF9;
+            --secondary-cream: #F5EBE1;
+            --primary-brown: #4A3018;
+            --text-brown: #6b4c30;
+            --accent-gold: #D4AF37;
+            --hover-gold: #b5952f;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--primary-cream);
+            color: var(--text-brown);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            color: var(--primary-brown);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Reusable Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(255, 253, 249, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-brown);
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo span {
+            font-size: 0.8rem;
+            font-family: var(--font-body);
+            color: var(--accent-gold);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .nav-links li a:hover {
+            color: var(--accent-gold);
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary-brown);
+            cursor: pointer;
+        }
+
+        /* Hero Section - UPDATED TO background.jpg */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(74, 48, 24, 0.6), rgba(74, 48, 24, 0.6)), url('background.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--primary-cream);
+        }
+
+        .hero-content h1 {
+            color: var(--primary-cream);
+            font-size: 4.5rem;
+            margin-bottom: 15px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            font-family: var(--font-heading);
+            font-style: italic;
+            color: var(--accent-gold);
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent-gold);
+            color: var(--primary-brown);
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            transition: var(--transition);
+            border: 2px solid var(--accent-gold);
+            animation: fadeInUp 1s ease 0.6s forwards;
+            opacity: 0;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent-gold);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 15px 15px 0 var(--secondary-cream);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid var(--secondary-cream);
+        }
+
+        .stat-item h4 {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+        }
+
+        .stat-item p {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        /* Products Section */
+        .products {
+            background-color: var(--secondary-cream);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--primary-cream);
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .product-icon {
+            font-size: 3rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+        .product-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Reviews Section */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent-gold);
+            position: relative;
+        }
+
+        .stars {
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .reviewer {
+            font-weight: 700;
+            color: var(--primary-brown);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--primary-brown);
+            color: var(--primary-cream);
+        }
+
+        .contact .section-title {
+            color: var(--primary-cream);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin-top: 5px;
+        }
+
+        .info-item h4 {
+            color: var(--accent-gold);
+            margin-bottom: 5px;
+            font-family: var(--font-body);
+        }
+
+        .info-item p, .info-item a {
+            font-size: 1.1rem;
+            color: var(--primary-cream);
+            transition: var(--transition);
+        }
+
+        .info-item a:hover {
+            color: var(--accent-gold);
+        }
+
+        .map-container {
+            width: 100%;
+            height: 350px;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #e5e3df; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--primary-brown);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #331e0f;
+            color: var(--primary-cream);
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .social-icons {
+            margin-bottom: 15px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin: 0 10px;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--accent-gold);
+            color: var(--primary-brown);
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 2px 2px 15px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-cream);
+                padding: 20px 0;
+                text-align: center;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .about-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="logo">
+                Jai Ganesh Bakery
+                <span>ESTD. 1955</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Our Story</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="hero-content container">
+            <h1>Jai Ganesh Bakery</h1>
+            <p>Serving Freshness Since 1955</p>
+            <a href="#products" class="btn">Explore Our Menu</a>
+        </div>
+    </header>
+
+    <section id="about" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Our Legacy</h2>
+            <p class="section-subtitle">A Tradition of Taste</p>
+            
+            <div class="about-grid">
+                <div class="about-image-wrapper">
+                    <img src="bakery.jpg" alt="Freshly baked bread and pastries" class="about-img">
+                </div>
+                <div class="about-text">
+                    <h3>The First Bakery in Sirpur Kagaznagar</h3>
+                    <p>Since 1955, Jai Ganesh Bakery has been the cornerstone of sweetness and joy in Sirpur Kagaznagar. What started as a humble oven baking daily bread has blossomed into the town's most cherished destination for baked goods.</p>
+                    <p>For generations, we have perfected our recipes, blending traditional baking methods with modern flavors. Our commitment to premium ingredients and daily freshness is the secret ingredient that brings our customers back day after day.</p>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <h4>70+</h4>
+                            <p>Years of Trust</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>1st</h4>
+                            <p>Bakery in Town</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>100%</h4>
+                            <p>Fresh Everyday</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="products section-padding">
+        <div class="container">
+            <h2 class="section-title">Our Offerings</h2>
+            <p class="section-subtitle">Baked with Love & Perfection</p>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <i class="fa-solid fa-cake-candles product-icon"></i>
+                    <h3>Signature Cakes</h3>
+                    <p>Rich, moist, and deeply flavorful. Perfect for birthdays, anniversaries, or satisfying your sweet cravings.</p>
+                </div>
+                <div class="product-card">
+                    <i class="fa-solid fa-cookie-bite product-icon"></i>
+                    <h3>Fresh Pastries</h3>
+                    <p>Delicate, flaky, and layered with the finest creams and chocolate. A heavenly treat for any time of the day.</p>
+                </div>
+                <div class="product-card">
+                    <i class="fa-solid fa-burger product-icon"></i>
+                    <h3>Savory Snacks</h3>
+                    <p>From crispy puffs to savory rolls. Freshly baked everyday to make your evening tea time special.</p>
+                </div>
+                <div class="product-card">
+                    <i class="fa-solid fa-wand-magic-sparkles product-icon"></i>
+                    <h3>Custom Cakes</h3>
+                    <p>Bring your imagination to life. We design custom theme cakes tailored perfectly for your grand celebrations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Customer Words</h2>
+            <p class="section-subtitle">What Sirpur Kagaznagar Says</p>
+            
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"The absolute best bakery in town! We ordered a custom cake for my daughter's birthday, and it was not only gorgeous but tasted heavenly. Truly a 70-year legacy."</p>
+                    <p class="reviewer">- Anjali M.</p>
+                </div>
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <p class="review-text">"Their evening snacks and puffs are my daily staple. The freshness is unmatched, and you can literally taste the quality in every single bite."</p>
+                    <p class="reviewer">- Rahul V.</p>
+                </div>
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"Growing up in Sirpur Kagaznagar, Jai Ganesh Bakery has always been synonymous with celebrations in our family. Their pastries are legendary!"</p>
+                    <p class="reviewer">- Sneha K.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact section-padding">
+        <div class="container">
+            <h2 class="section-title">Visit Us</h2>
+            <p class="section-subtitle" style="color: var(--secondary-cream);">Step Into Sweetness</p>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <h4>Our Location</h4>
+                            <p>Main Market Road<br>Sirpur Kagaznagar, Telangana 504296</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <h4>Call Us</h4>
+                            <a href="tel:+917661808349">+91 76618 08349</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-clock"></i>
+                        <div>
+                            <h4>Opening Hours</h4>
+                            <p>Monday - Sunday<br>8:00 AM - 10:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15124.896740632314!2d79.4754751!3d19.3356877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a32ce105d15eb23%3A0xcb5df6e3f56ce43f!2sKagaznagar%2C%20Telangana!5e0!3m2!1sen!2sin!4v1709230534234!5m2!1sen!2sin" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Google Maps Location of Sirpur Kagaznagar">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+            <p>© 2024 Jai Ganesh Bakery. Serving Freshness Since 1955. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/917661808349" class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Chat with us on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            if(navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        const navItems = document.querySelectorAll('.nav-links li a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                if(navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    const icon = mobileToggle.querySelector('i');
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.05)';
+            }
+        });
+    </script>
+</body>
+</html>
